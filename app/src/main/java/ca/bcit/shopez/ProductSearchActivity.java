@@ -57,9 +57,12 @@ public class ProductSearchActivity extends AppCompatActivity {
 
                     //text = doc.text();
 
-                    Elements data = doc.select("div.mp-welcome");
+                    Elements data = doc.select("#mp-welcome");
 
-//                    text = data.
+                    System.out.println("#########################################");
+                    System.out.println(data);
+
+                    text = data.text();
 
 //                    int size = data.size();
 
