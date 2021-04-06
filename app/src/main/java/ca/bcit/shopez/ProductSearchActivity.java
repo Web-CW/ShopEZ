@@ -30,8 +30,8 @@ public class ProductSearchActivity extends AppCompatActivity {
 //            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 //            con.setRequestMethod("GET");
 
-            String url = "https://ca.yahoo.com/";
-            Document doc = Jsoup.connect("https://ca.yahoo.com/").userAgent("Chrome").get();
+            String url = "https://en.wikipedia.org/";
+            Document doc = Jsoup.connect(url).get();
             Elements data = doc.select("div.mp-welcome");
 
             int size = data.size();
