@@ -14,7 +14,8 @@
         android:layout_marginTop="73dp"
         android:text="@string/app_name"
         android:textStyle="bold"
-        android:textSize="60sp"/>
+        android:textSize="60sp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/user_name"
@@ -24,8 +25,7 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColorHint="#aaaa9a"/>
+        android:textSize="30sp"/>
 
     <EditText
         android:id="@+id/user_password"
@@ -35,8 +35,30 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColorHint="#aaaa9a"/>
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/sign_in_btn"
+        android:layout_width="310dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#3EB489"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="@string/sign_in"/>
+
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="310dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#3EB489"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="@string/sign_up"/>
 
     <Button
         android:id="@+id/products"
