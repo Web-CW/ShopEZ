@@ -4,4 +4,10 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
+    <string name="category">Categories</string>
+    <string name="on_sale_category">On-Sale</string>
+    <string name="office_category">Office</string>
+    <string name="gaming_category">Gaming</string>
+    <string name="home_category">Home</string>
+    <string name="out_door_category">Outdoors</string>
 </resources>
