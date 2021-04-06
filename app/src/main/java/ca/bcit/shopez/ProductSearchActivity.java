@@ -2,8 +2,11 @@ package ca.bcit.shopez;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,34 +20,65 @@ import java.net.URL;
 
 
 public class ProductSearchActivity extends AppCompatActivity {
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_search);
-    }
 
-    public static void searchAmazon() {
-        try {
-//            URL url = new URL("https://www.amazon.ca/iphone-x/s?k=iphone+x");
-//            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//            con.setRequestMethod("GET");
-
-            String url = "https://en.wikipedia.org/";
-            Document doc = Jsoup.connect(url).get();
-            Elements data = doc.select("div.mp-welcome");
-
-            int size = data.size();
-
-            for (int i = 0; i < size; i++) {
-                System.out.println(data.select("div.mp-welcome"));
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        tv = findViewById(R.id.display_text);
     }
 
     public void searchAmazonOnClick(View view) {
-        searchAmazon();
+        new Content().execute();
+
+//        try {
+//
+//            String url = "https://en.wikipedia.org/wiki/Main_Page";
+//            Document doc = Jsoup.connect(url).
+//                    timeout(6000).get();
+//            Elements navigationMenu = doc.select("#mw-navigation");
+//            System.out.println(navigationMenu);
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
+
+        public class Content extends AsyncTask<Void, Void, Void> {
+            String text;
+
+            @Override
+            public Void doInBackground(Void... voids) {
+                try {
+                    String url = "https://en.m.wikipedia.org/wiki/Main_Page";
+
+                    Document doc = Jsoup.connect(url).get();
+
+                    //text = doc.text();
+
+                    Elements data = doc.select("div.mp-welcome");
+
+//                    text = data.
+
+//                    int size = data.size();
+
+
+//                    for (int i = 0; i < size; i++) {
+//                        text = data.select("div.mp-welcome").text();
+//                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            tv.setText(text);
+        }
+    }
+
 }

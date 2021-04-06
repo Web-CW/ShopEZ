@@ -15,4 +15,11 @@
         android:layout_gravity="center"
         android:onClick="searchAmazonOnClick"
         android:text="Search Amazon" />
+
+    <TextView
+        android:id="@+id/display_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="" />
 </LinearLayout>
