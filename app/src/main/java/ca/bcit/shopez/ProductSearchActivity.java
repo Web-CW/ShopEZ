@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,6 +19,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.Executor;
 
 
 public class ProductSearchActivity extends AppCompatActivity {
@@ -43,48 +41,61 @@ public class ProductSearchActivity extends AppCompatActivity {
         new Content().execute();
     }
 
-        public class Content extends AsyncTask<Void, Void, Void> {
-            String text;
+    public class Content extends AsyncTask<Void, Void, Void> {
+        String text = "";
 
-            @Override
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            tv.setText(text);
+        }
+
+        @Override
             public Void doInBackground(Void... voids) {
                 try {
-                    String name1 = userSearchedText.replace(" ", "-");
-                    String name2 = userSearchedText.replace(" ", "+");
+                    String name1 = userSearchedText.replace(" ", "+");
+                    System.out.println(name1);
+//                    String name2 = userSearchedText.replace(" ", "+");
 
-                    String url = String.format("https://www.amazon.ca/%s/s?k%s", name1, name2);
+                    String canadaComputersURL = String.format("https://www.canadacomputers.com/search/results_details.php?language=en&keywords=%s", name1);
+                    System.out.println(canadaComputersURL);
 
-                    Document doc = Jsoup.connect("https://www.amazon.ca/iphone-x/s?k=iphone+x").get();
+                    Document doc = Jsoup.connect(canadaComputersURL).get();
 
-                    text = doc.text();
+//                    text = doc.text();
 
-                    Elements data = doc.getElementsByClass("s-main-slot s-result-list s-search-results sg-row");
+//                    System.out.println(doc.text());
 
-//                    Elements data = doc.select("#search");
+//                    Elements data = doc.getElementsByClass("css-x7wixz epettpn0");
+                    Elements data = doc.getElementsByClass("col-xl-3 col-lg-4 col-6 mt-0_5 px-0_5 toggleBox mb-1");
+
+//                    Elements data = doc.select("a[href]");
 
                     System.out.println("#########################################");
                     System.out.println(data);
 
-                    //text = data.text();
+//                    text = data.text();
 
-//                    int size = data.size();
+                    int size = data.size();
+//                    System.out.println(size);
 
+                    int count = 0;
+                    for (Element item: data) {
+                        String productName = item.getElementsByClass("text-dark text-truncate_3").text();
+                        String productURL =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text();
+//                        System.out.println(productPrice);
 
-//                    for (int i = 0; i < size; i++) {
-//                        text = data.select("div.mp-welcome").text();
-//                    }
+                        text += productName + " " + productURL + "\n\n";
+//                        text += productPrice + "\n\n";
+                        count++;
+                        if (count == 10)
+                            break;
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return null;
             }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            tv.setText(text);
-        }
     }
 
 }
