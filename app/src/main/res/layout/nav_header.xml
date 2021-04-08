@@ -19,10 +19,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
+            android:textColor="@color/dark_mocha"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"  />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to Your Favourite Price Comparison App!" />
+            android:textColor="@color/dark_mocha"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/welcome_text" />
     </LinearLayout>
 </FrameLayout>

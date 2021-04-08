@@ -5,33 +5,33 @@
         <item
             android:id="@+id/nav_homepage"
             android:icon="@android:drawable/sym_action_email"
-            android:title="Homepage"
+            android:title="@string/home_page_title"
             android:checked="true" />
         <item
             android:id="@+id/nav_sign_in"
             android:icon="@android:drawable/sym_action_email"
-            android:title="Sign-in" />
+            android:title="@string/sign_in" />
         <item
-            android:id="@+id/nav_log_out"
+            android:id="@+id/nav_sign_out"
             android:icon="@android:drawable/ic_menu_edit"
-            android:title="Log-out" />
+            android:title="@string/sign_out" />
         <item
             android:id="@+id/nav_about"
             android:icon="@android:drawable/ic_menu_send"
-            android:title="About" />
+            android:title="@string/about_title" />
     </group>
 
     <item
-        android:title="Support" >
+        android:title="@string/support_title" >
         <menu>
             <item
                 android:id="@+id/nav_help"
                 android:icon="@android:drawable/ic_menu_help"
-                android:title="Frequently Asked Questions (FAQ)" />
+                android:title="@string/faq_title" />
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@android:drawable/sym_action_email"
-                android:title="Send Us Feedback!" />
+                android:title="@string/feedback_title" />
         </menu>
     </item>
 

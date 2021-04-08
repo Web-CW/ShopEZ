@@ -3,7 +3,7 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:id="@+id/drawer_layout"
-android:background="#EEEBD0"
+android:background="#FAF3DD"
 android:layout_width="match_parent"
 android:layout_height="match_parent" >
 
@@ -14,13 +14,6 @@ android:layout_height="match_parent" >
         <include
             layout="@layout/toolbar_main"
             android:id="@+id/toolbar" />
-        <Button
-            android:id="@+id/search_products_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="onSearch"
-            android:text="@string/search_products_btn" />
 
         <EditText
             android:id="@+id/search_item_name_edit_text"
@@ -28,8 +21,17 @@ android:layout_height="match_parent" >
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="text"
-            android:text=""
             android:hint="@string/search_by_name" />
+
+        <Button
+            android:id="@+id/search_products_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSearch"
+            android:layout_gravity="center"
+            android:text="@string/search_products_btn"
+            android:drawableEnd="@android:drawable/ic_menu_search" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_recycler"

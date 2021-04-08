@@ -1,30 +1,101 @@
 package ca.bcit.shopez;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ItemList {
-    ArrayList<Item> itemList = new ArrayList<Item>();
+    private ArrayList<Item> itemList;
 
-//    public ArrayList<Item> getItemsByPriceRange(double lowerBound, double upperBound) {
-//        ArrayList<Item> foundItems= new ArrayList<Item>();
-//        for (int i = 0; i < itemList.size(); i++) {
-//            Item targetItem = itemList.get(i);
-//            if (targetItem.getPrice() >= lowerBound && targetItem.getPrice() <= upperBound) {
-//                foundItems.add(targetItem);
-//            }
-//        }
-//        return foundItems;
-//    }
+    public ItemList(){
+        itemList = new ArrayList<>();
+    }
 
-    public ArrayList<Item> getItemsByName(String name) {
-        ArrayList<Item> foundItems= new ArrayList<Item>();
-        for (int i = 0; i < itemList.size(); i++) {
-            Item targetItem = itemList.get(i);
-            if (targetItem.getItemName().toLowerCase().contains(name.toLowerCase().trim())) {
-                foundItems.add(targetItem);
+    public int getSize(){
+        return this.itemList.size();
+    }
+
+    private Double[] sortProductsPriceInAscendingOrder(){
+        Double[] productsPrice = new Double[this.itemList.size()];
+        for (int index = 0; index < productsPrice.length; index++){
+            productsPrice[index] = this.itemList.get(index).getPrice();
+        }
+        Arrays.sort(productsPrice);
+        return productsPrice;
+    }
+
+    private String[] sortProductsFromAToZ(){
+        String[] productsName = new String[this.itemList.size()];
+        for (int index = 0; index < productsName.length; index++){
+            productsName[index] = this.itemList.get(index).getItemName();
+        }
+        Arrays.sort(productsName);
+        return productsName;
+    }
+
+    private Item retrieveItemByPrice(double price){
+        Item item = null;
+        for (Item product : this.itemList){
+            if (Double.compare(product.getPrice(), price) == 0){
+                item = product;
+                break;
             }
         }
-        return foundItems;
+        return item;
+    }
+
+    private Item retrieveItemByName(String name){
+        Item item = null;
+        for (Item product : this.itemList){
+            if (product.getItemName().equals(name)){
+                item = product;
+                break;
+            }
+        }
+        return item;
+    }
+
+    public void sortInAscendingOrder(){
+        Double[] productsPrice = this.sortProductsPriceInAscendingOrder();
+        ArrayList<Item> sortedItemsList = new ArrayList<>();
+        for (Double price : productsPrice) {
+            sortedItemsList.add(this.retrieveItemByPrice(price));
+        }
+        this.itemList = sortedItemsList;
+    }
+
+    public void sortInDescendingOrder(){
+        Double[] productsPrice = this.sortProductsPriceInAscendingOrder();
+        Arrays.sort(productsPrice, Collections.reverseOrder());
+        ArrayList<Item> sortedItemsList = new ArrayList<>();
+        for (Double price : productsPrice) {
+            sortedItemsList.add(this.retrieveItemByPrice(price));
+        }
+        this.itemList = sortedItemsList;
+
+    }
+
+    public void sortInAlphabeticalOrder(){
+        String[] productsName = this.sortProductsFromAToZ();
+        ArrayList<Item> sortedItemsList = new ArrayList<>();
+        for (String name : productsName) {
+            sortedItemsList.add(this.retrieveItemByName(name));
+        }
+        this.itemList = sortedItemsList;
+    }
+
+    public void sortInReverseAlphabeticalOrder(){
+        String[] productsName = this.sortProductsFromAToZ();
+        Arrays.sort(productsName, Collections.reverseOrder());
+        ArrayList<Item> sortedItemsList = new ArrayList<>();
+        for (String name : productsName) {
+            sortedItemsList.add(this.retrieveItemByName(name));
+        }
+        this.itemList = sortedItemsList;
+    }
+
+    public Item getItemByIndex(int index){
+        return this.itemList.get(index);
     }
 
     public ArrayList<Item> getItemList() {
