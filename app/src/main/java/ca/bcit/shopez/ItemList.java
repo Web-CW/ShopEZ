@@ -3,28 +3,21 @@ package ca.bcit.shopez;
 import java.util.ArrayList;
 
 public class ItemList {
-    ArrayList<Item> itemList = new ArrayList<Item>();
+    private ArrayList<Item> itemList;
 
-//    public ArrayList<Item> getItemsByPriceRange(double lowerBound, double upperBound) {
-//        ArrayList<Item> foundItems= new ArrayList<Item>();
-//        for (int i = 0; i < itemList.size(); i++) {
-//            Item targetItem = itemList.get(i);
-//            if (targetItem.getPrice() >= lowerBound && targetItem.getPrice() <= upperBound) {
-//                foundItems.add(targetItem);
-//            }
-//        }
-//        return foundItems;
-//    }
+    public ItemList(){
+        itemList = new ArrayList<>();
+    }
 
-    public ArrayList<Item> getItemsByName(String name) {
-        ArrayList<Item> foundItems= new ArrayList<Item>();
-        for (int i = 0; i < itemList.size(); i++) {
-            Item targetItem = itemList.get(i);
-            if (targetItem.getItemName().toLowerCase().contains(name.toLowerCase().trim())) {
-                foundItems.add(targetItem);
-            }
-        }
-        return foundItems;
+    public int getSize(){
+        return this.itemList.size();
+    }
+
+    public void sortInAscendingOrder(){
+    }
+
+    public Item getItemByIndex(int index){
+        return this.itemList.get(index);
     }
 
     public ArrayList<Item> getItemList() {

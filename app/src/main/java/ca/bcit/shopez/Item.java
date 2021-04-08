@@ -2,18 +2,18 @@ package ca.bcit.shopez;
 
 public class Item {
     private String itemName;
-    private String price;
+    private double price;
     private String itemURL;
     private String imgURL;
 
-    public Item(String itemName, String price, String imgURL, String itemURL) {
+    public Item(String itemName, double price, String imgURL, String itemURL) {
         this.itemName = itemName;
         this.price = price;
         this.itemURL = itemURL;
         this.imgURL = imgURL;
     }
 
-    public Item(String itemName, String price) {
+    public Item(String itemName, double price) {
         this.itemName = itemName;
         this.price = price;
 
@@ -30,11 +30,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -52,5 +52,14 @@ public class Item {
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemName='" + itemName + '\'' +
+                ", price=" + price +
+                ", itemURL='" + itemURL + '\'' +
+                '}';
     }
 }

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAdapter.ViewHolder>{
     private String[] itemNames;
-    private String[] itemPrices;
+    private double[] itemPrices;
     private String[] itemImgURL;
     private String[] itemLinkURL;
 
@@ -38,7 +38,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         }
     }
 
-    public CaptionedItemsAdapter(String[] itemNames, String[] itemPrices, String[] itemImgURL, String[] itemLinkURL) {
+    public CaptionedItemsAdapter(String[] itemNames, double[] itemPrices, String[] itemImgURL, String[] itemLinkURL) {
         this.itemNames = itemNames;
         this.itemPrices = itemPrices;
         this.itemImgURL = itemImgURL;
@@ -71,6 +71,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         TextView itemPriceTextView = cardView.findViewById(R.id.item_price);
         itemPriceTextView.setTextSize(22);
         itemPriceTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        itemPriceTextView.setText(itemPrices[position]);
+        String itemPrice = "$" + itemPrices[position];
+        itemPriceTextView.setText(itemPrice);
     }
 }
