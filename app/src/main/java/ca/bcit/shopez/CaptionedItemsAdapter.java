@@ -63,7 +63,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         final CardView cardView = holder.cardView;
         cardView.setBackgroundResource(R.drawable.custom_cardview_background);
         ImageView imageView = cardView.findViewById(R.id.item_image);
-        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions().override(750, 750)).into(imageView);
+        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions().override(600, 600)).into(imageView);
 
         TextView itemNameTextView = cardView.findViewById(R.id.item_name);
         itemNameTextView.setTextSize(17);
