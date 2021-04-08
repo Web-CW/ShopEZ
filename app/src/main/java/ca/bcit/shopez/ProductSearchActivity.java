@@ -60,6 +60,30 @@ public class ProductSearchActivity extends AppCompatActivity {
         }
     }
 
+    private void searchProductsFromNewEgg(){
+        try {
+            String productSearchedName = userSearchedText.replace(" ", "+");
+            String connectionString = String.format("https://www.newegg.ca/p/pl?d=%s", productSearchedName);
+            Document newegg = Jsoup.connect(connectionString).get();
+            Elements data = newegg.select("div.item-cell");
+            int productCounter = 0;
+            for (Element product: data) {
+                String productName = product.select("div.item-info > a").text();
+                String productPrice = "$" + product.select("li.price-current > strong").text();
+                String productImgURL = product.select("div.item-container > a")
+                        .select("img")
+                        .attr("src");
+                Item item = new Item(productName, productPrice, productImgURL, "");
+                itemList.add(item);
+                productCounter++;
+                if (productCounter == 10)
+                    break;
+            }
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
     private void searchProductsFromCanadaComputers(){
         try {
             String name1 = userSearchedText.replace(" ", "+");
@@ -120,6 +144,7 @@ public class ProductSearchActivity extends AppCompatActivity {
             itemList.clear();
             searchProductsFromCanadaComputers();
             searchProductsFromMemoryExpress();
+            searchProductsFromNewEgg();
             return null;
         }
     }
