@@ -3,16 +3,20 @@
     <group
         android:checkableBehavior="single" >
         <item
-            android:id="@+id/nav_inbox"
+            android:id="@+id/nav_homepage"
             android:icon="@android:drawable/sym_action_email"
-            android:title="Sign-in"
+            android:title="Homepage"
             android:checked="true" />
         <item
-            android:id="@+id/nav_drafts"
+            android:id="@+id/nav_sign_in"
+            android:icon="@android:drawable/sym_action_email"
+            android:title="Sign-in" />
+        <item
+            android:id="@+id/nav_log_out"
             android:icon="@android:drawable/ic_menu_edit"
             android:title="Log-out" />
         <item
-            android:id="@+id/nav_sent"
+            android:id="@+id/nav_about"
             android:icon="@android:drawable/ic_menu_send"
             android:title="About" />
     </group>

@@ -16,18 +16,17 @@ android:layout_height="match_parent" >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#CDA412">
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="25sp"
             android:layout_gravity="center"
-            android:layout_marginTop="73dp"
-            android:text="@string/app_name"
-            android:textStyle="bold"
-            android:textSize="60sp"
-            android:textColor="@color/black"/>
+            android:textColor="@android:color/holo_purple"
+            android:text="@string/create_new_account" />
 
         <EditText
             android:id="@+id/editEmail"
@@ -45,30 +44,13 @@ android:layout_height="match_parent" >
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/sign_in_btn"
-            android:layout_width="310dp"
-            android:layout_height="74dp"
-            android:backgroundTint="#3EB489"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:onClick="logInOnClick"
-            android:text="@string/sign_in"/>
-
-
-        <Button
-            android:id="@+id/sign_up_btn"
-            android:layout_width="310dp"
-            android:layout_height="74dp"
-            android:backgroundTint="#3EB489"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:onClick="goToSignUpActivityOnClick"
-            android:text="@string/sign_up"/>
-
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textAllCaps="false"
+            android:text="@string/register" />
 
         <ProgressBar
             android:id="@+id/progressBar"

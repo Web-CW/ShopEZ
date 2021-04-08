@@ -24,21 +24,23 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignInActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class SignUpActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    EditText editEmail;
-    EditText editPassword;
+    EditText editEmail, editPassword;
+    Button btnRegister;
+    TextView tvLogin;
     ProgressBar progressBar;
-
     FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_up);
 
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
+        btnRegister = findViewById(R.id.btnRegister);
+//        tvLogin = findViewById(R.id.tvLogin);
         progressBar = findViewById(R.id.progressBar);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -63,48 +65,54 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(getApplicationContext(), ProductSearchActivity.class));
             finish();
         }
-    }
 
-    public void goToSignUpActivityOnClick(View view) {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-    }
-
-    public void logInOnClick(View view) {
-        String email = editEmail.getText().toString().trim();
-        String password = editPassword.getText().toString().trim();
-
-        if (TextUtils.isEmpty(email)) {
-            editEmail.setError("Email is required");
-            return;
-        }
-
-        if (TextUtils.isEmpty(password)) {
-            editEmail.setError("Password is required");
-            return;
-        }
-
-        if (password.length() <6) {
-            editEmail.setError("Password must be >= 6 characters.");
-            return;
-        }
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        //authenticate user
-        fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(SignInActivity.this, "Login successful!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(getApplicationContext(), ProductSearchActivity.class));
-                } else {
-                    Toast.makeText(SignInActivity.this, "ERROR: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
+            public void onClick(View view) {
+                String email = editEmail.getText().toString().trim();
+                String password = editPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    editEmail.setError("Email is required");
+                    return;
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    editPassword.setError("Password is required");
+                    return;
+                }
+
+                if (password.length() <6) {
+                    editPassword.setError("Password must be >= 6 characters.");
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                // register user
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), ProductSearchActivity.class));
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "ERROR: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
             }
+
         });
 
+//        tvLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            }
+//        });
     }
 
     @Override

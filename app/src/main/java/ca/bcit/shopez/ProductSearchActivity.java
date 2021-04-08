@@ -3,14 +3,21 @@ package ca.bcit.shopez;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ProductSearchActivity extends AppCompatActivity {
+public class ProductSearchActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private EditText searchTextField;
     private String userSearchedText;
     private ArrayList<Item> itemList;
@@ -45,6 +52,9 @@ public class ProductSearchActivity extends AppCompatActivity {
                 R.string.nav_close_drawer);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void onSearch(View view) {
@@ -161,8 +171,50 @@ public class ProductSearchActivity extends AppCompatActivity {
             searchProductsFromCanadaComputers();
             searchProductsFromMemoryExpress();
             searchProductsFromNewEgg();
+
             return null;
         }
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent = null;
+
+        switch(id) {
+            case R.id.nav_homepage:
+                intent = new Intent(this, ProductSearchActivity.class);
+                break;
+            case R.id.nav_sign_in:
+                intent = new Intent(this, SignInActivity.class);
+                break;
+            case R.id.nav_log_out:
+                FirebaseAuth.getInstance().signOut(); // logout
+                intent = new Intent(getApplicationContext(), SignInActivity.class);
+                break;
+            case R.id.nav_about:
+                intent = new Intent(this, AboutUsActivity.class);
+                break;
+//            case R.id.nav_help:
+//                break;
+//            case R.id.nav_feedback:
+//                break;
+        }
+
+        startActivity(intent);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
