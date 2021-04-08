@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -18,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -100,6 +103,8 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
     }
 
     private void addItem(Item item) {
+        databaseItems = FirebaseDatabase.getInstance().getReference();
+
         String itemName = item.getItemName().trim();
         double price = item.getPrice();
         String imgURL = item.getImgURL();
@@ -108,7 +113,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         String id = databaseItems.push().getKey();
         Item itemAddedToCart = new Item(itemName, price, imgURL, itemURL);
 
-        Task setValueTask = databaseItems.child(id).setValue(itemAddedToCart);
+        Task setValueTask = databaseItems.child("item").child(itemName).setValue(itemAddedToCart);
 
 //        setValueTask.addOnSuccessListener(new OnSuccessListener() {
 //            @Override
