@@ -1,5 +1,6 @@
 package ca.bcit.shopez;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,8 +18,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,12 +39,14 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
     private String userSearchedText;
     private ArrayList<Item> itemList;
 
+    private DatabaseReference databaseItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_search);
         searchTextField = findViewById(R.id.search_item_name_edit_text);
-        itemList = new ArrayList<>();
+        itemList = new ArrayList<Item>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -225,4 +232,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             super.onBackPressed();
         }
     }
+
+
+
 }

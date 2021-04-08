@@ -3,8 +3,9 @@ package ca.bcit.shopez;
 public class Item {
     private String itemName;
     private String price;
-    private String itemURL;
     private String imgURL;
+    private String itemURL;
+
 
     public Item(String itemName, String price, String imgURL, String itemURL) {
         this.itemName = itemName;

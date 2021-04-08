@@ -23,14 +23,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    EditText editEmail, editPassword;
-    Button btnRegister;
-    TextView tvLogin;
-    ProgressBar progressBar;
-    FirebaseAuth fAuth;
+    private EditText editEmail, editPassword;
+    private Button btnRegister;
+    private ProgressBar progressBar;
+    private FirebaseAuth fAuth;
+
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +92,14 @@ public class SignUpActivity extends AppCompatActivity implements NavigationView.
 
                 progressBar.setVisibility(View.VISIBLE);
 
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+
                 // register user
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            mDatabase.child("users").child(fAuth.getUid()).setValue(editEmail.getText().toString());
                             Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), ProductSearchActivity.class));
                         } else {

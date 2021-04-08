@@ -69,7 +69,6 @@ android:layout_height="match_parent" >
             android:onClick="goToSignUpActivityOnClick"
             android:text="@string/sign_up"/>
 
-
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
