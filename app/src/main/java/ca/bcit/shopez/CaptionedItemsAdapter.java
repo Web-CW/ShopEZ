@@ -28,7 +28,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
     private String[] itemNames;
     private double[] itemPrices;
     private String[] itemImgURL;
-    private String[] itemLinkURL;
+    private String[] vendorLogoURL;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
@@ -39,11 +39,11 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         }
     }
 
-    public CaptionedItemsAdapter(String[] itemNames, double[] itemPrices, String[] itemImgURL, String[] itemLinkURL) {
+    public CaptionedItemsAdapter(String[] itemNames, double[] itemPrices, String[] itemImgURL, String[] vendorLogoURL) {
         this.itemNames = itemNames;
         this.itemPrices = itemPrices;
         this.itemImgURL = itemImgURL;
-        this.itemLinkURL = itemLinkURL;
+        this.vendorLogoURL = vendorLogoURL;
     }
 
     @Override
@@ -63,7 +63,12 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         final CardView cardView = holder.cardView;
         cardView.setBackgroundResource(R.drawable.custom_cardview_background);
         ImageView imageView = cardView.findViewById(R.id.item_image);
-        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions().override(600, 600)).into(imageView);
+        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions()
+                .override(600, 600)).into(imageView);
+
+        ImageView vendorLogoImageView = cardView.findViewById(R.id.vendor_logo);
+        Glide.with(cardView).load(vendorLogoURL[position]).apply(RequestOptions
+                .circleCropTransform().override(107, 107)).into(vendorLogoImageView);
 
         TextView itemNameTextView = cardView.findViewById(R.id.item_name);
         itemNameTextView.setTextSize(17);

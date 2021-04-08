@@ -37,10 +37,13 @@
                 android:layout_marginStart="10dp"
                 android:textAlignment="viewStart"/>
 
-            <TextView
-                android:id="@+id/item_price"
+            <ImageView
+                android:id="@+id/vendor_logo"
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="37dp"
+                android:contentDescription="@string/vendor_logo" />
 
         </LinearLayout>
 
@@ -49,12 +52,11 @@
             android:layout_width="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/vendor"
-                android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_marginStart="10dp"
                 android:layout_width="237dp"
-                android:contentDescription="@string/vendor_image"
-                android:layout_gravity="center"/>
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/add_to_cart_button"
@@ -63,6 +65,7 @@
                 android:layout_marginEnd="10dp"
                 android:textSize="13sp"
                 android:text="@string/add_to_cart_btn" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

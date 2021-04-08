@@ -74,6 +74,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             String connectionString = String.format("https://www.memoryexpress.com/Search/Products?Search=%s", productSearchedName);
             Document memoryExpress = Jsoup.connect(connectionString).get();
             Elements data = memoryExpress.select("div.c-shca-icon-item");
+            String vendorLogoURL = "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.18169-9/149495_10150770597476780_1164283623_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=lnqxarK5jVEAX8-5vct&_nc_ht=scontent.fsgn2-3.fna&oh=5faa1281c958ecb08479470b82e45f19&oe=60949D8F";
             int productCounter = 0;
             for (Element product: data) {
                 String productName = product.select("div.c-shca-icon-item__body-name > a")
@@ -81,11 +82,10 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 String productPrice = product.select("div.c-shca-icon-item__summary-list > span")
                         .text()
                         .replaceAll("[+$,]","");
-
                 String productImgURL = product.select("div.c-shca-icon-item__body-image > a")
                         .select("img")
                         .attr("src");
-                Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, "");
+                Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(item);
                 productCounter++;
                 if (productCounter == 3)
@@ -102,8 +102,9 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         try {
             String productSearchedName = userSearchedText.replace(" ", "+");
             String connectionString = String.format("https://www.newegg.ca/p/pl?d=%s", productSearchedName);
-            Document newegg = Jsoup.connect(connectionString).get();
-            Elements data = newegg.select("div.item-cell");
+            Document newEgg = Jsoup.connect(connectionString).get();
+            Elements data = newEgg.select("div.item-cell");
+            String vendorLogoURL = "https://upload.wikimedia.org/wikipedia/en/e/e6/Newegg_logo%2C_June_2020.png";
             int productCounter = 0;
             for (Element product: data) {
                 String productName = product.select("div.item-info > a")
@@ -115,7 +116,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 String productImgURL = product.select("div.item-container > a")
                         .select("img")
                         .attr("src");
-                Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, "");
+                Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(item);
                 productCounter++;
                 if (productCounter == 3)
@@ -134,6 +135,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             String canadaComputersURL = String.format("https://www.canadacomputers.com/search/results_details.php?language=en&keywords=%s", name1);
             Document doc = Jsoup.connect(canadaComputersURL).get();
             Elements data = doc.getElementsByClass("col-xl-3 col-lg-4 col-6 mt-0_5 px-0_5 toggleBox mb-1");
+            String vendorLogoURL = "https://imgcdn.flyers-on-line.com/weekly-flyer/canada-computers/logo-387/canada-computers.jpg?v=1570574981";
             int count = 0;
             for (Element item: data) {
                 String productName = item.getElementsByClass("text-dark text-truncate_3")
@@ -144,7 +146,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 String productImgURL = item.getElementsByClass("pq-img-manu_logo align-self-center")
                         .attr("src");
                 System.out.println(productImgURL);
-                Item itemFound = new Item(productName, Double.parseDouble(productPrice), productImgURL, "");
+                Item itemFound = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(itemFound);
                 count++;
                 if (count == 3)
@@ -181,7 +183,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 itemNames[i] = itemList.getItemByIndex(i).getItemName();
                 itemPrices[i] = itemList.getItemByIndex(i).getPrice();
                 itemImgURL[i] = itemList.getItemByIndex(i).getImgURL();
-                itemLinkURL[i] = itemList.getItemByIndex(i).getItemURL();
+                itemLinkURL[i] = itemList.getItemByIndex(i).getVendorLogoURL();
             }
 
             CaptionedItemsAdapter adapter = new CaptionedItemsAdapter(itemNames, itemPrices, itemImgURL, itemLinkURL);

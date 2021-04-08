@@ -25,5 +25,5 @@
     <string name="feedback_title">Send Us Feedback!</string>
     <string name="create_new_account">Create new account</string>
     <string name="welcome_text">Welcome to Your Favourite Price Comparison App!</string>
-    <string name="vendor_image">Vendor picture</string>
+    <string name="vendor_logo">Vendor Logo</string>
 </resources>
