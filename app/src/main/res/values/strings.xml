@@ -10,4 +10,6 @@
     <string name="gaming_category">Gaming</string>
     <string name="home_category">Home</string>
     <string name="out_door_category">Outdoors</string>
+    <string name="search_products_btn">Search Products</string>
+    <string name="search_by_name">Search Product by Name</string>
 </resources>
