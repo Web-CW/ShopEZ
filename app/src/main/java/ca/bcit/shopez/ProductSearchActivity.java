@@ -45,7 +45,7 @@ public class ProductSearchActivity extends AppCompatActivity {
             int productCounter = 0;
             for (Element product: data) {
                 String productName = product.select("div.c-shca-icon-item__body-name > a").text();
-                String productPrice = product.select("div.c-shca-icon-item__summary-regular > span").text();
+                String productPrice = product.select("div.c-shca-icon-item__summary-list > span").text();
                 String productImgURL = product.select("div.c-shca-icon-item__body-image > a")
                         .select("img")
                         .attr("src");
