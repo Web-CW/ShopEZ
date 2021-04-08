@@ -12,4 +12,6 @@
     <string name="out_door_category">Outdoors</string>
     <string name="search_products_btn">Search Products</string>
     <string name="search_by_name">Search Product by Name</string>
+    <string name="nav_open_drawer">Open Navigation drawer</string>
+    <string name="nav_close_drawer">Close navigation drawer</string>
 </resources>

@@ -1,6 +1,9 @@
 package ca.bcit.shopez;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +32,19 @@ public class ProductSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_search);
         searchTextField = findViewById(R.id.search_item_name_edit_text);
         itemList = new ArrayList<>();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.nav_open_drawer,
+                R.string.nav_close_drawer);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
     public void onSearch(View view) {
@@ -52,7 +68,7 @@ public class ProductSearchActivity extends AppCompatActivity {
                 Item item = new Item(productName, productPrice, productImgURL, "");
                 itemList.add(item);
                 productCounter++;
-                if (productCounter == 10)
+                if (productCounter == 3)
                     break;
             }
         } catch (IOException ioException) {
@@ -76,7 +92,7 @@ public class ProductSearchActivity extends AppCompatActivity {
                 Item item = new Item(productName, productPrice, productImgURL, "");
                 itemList.add(item);
                 productCounter++;
-                if (productCounter == 10)
+                if (productCounter == 3)
                     break;
             }
         } catch (IOException ioException) {
@@ -104,7 +120,7 @@ public class ProductSearchActivity extends AppCompatActivity {
                 Item itemFound = new Item(productName, productPrice, productImgURL, "");
                 itemList.add(itemFound);
                 count++;
-                if (count == 10)
+                if (count == 3)
                     break;
             }
         } catch (IOException e) {
