@@ -156,6 +156,15 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         return productsList;
     }
 
+    private void mergeProducts(){
+        ArrayList<Item> productsFromCanadaComputers = searchProductsFromCanadaComputers();
+        ArrayList<Item> productsFromMemoryExpress = searchProductsFromMemoryExpress();
+        ArrayList<Item> productsFromNewEgg = searchProductsFromNewEgg();
+        productsFromCanadaComputers.addAll(productsFromMemoryExpress);
+        productsFromCanadaComputers.addAll(productsFromNewEgg);
+        this.itemList.setItemList(productsFromCanadaComputers);
+    }
+
     public class Content extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPostExecute(Void aVoid) {
@@ -185,12 +194,8 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
         @Override
         public Void doInBackground(Void... voids) {
-            ArrayList<Item> productsFromCanadaComputers = searchProductsFromCanadaComputers();
-            ArrayList<Item> productsFromMemoryExpress = searchProductsFromMemoryExpress();
-            ArrayList<Item> productsFromNewEgg = searchProductsFromNewEgg();
-            productsFromCanadaComputers.addAll(productsFromMemoryExpress);
-            productsFromCanadaComputers.addAll(productsFromNewEgg);
-            itemList.setItemList(productsFromCanadaComputers);
+            mergeProducts();
+            itemList.sortInReverseAlphabeticalOrder();
             return null;
         }
     }

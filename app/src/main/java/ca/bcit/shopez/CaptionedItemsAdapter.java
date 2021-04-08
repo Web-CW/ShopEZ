@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAdapter.ViewHolder>{
@@ -71,7 +72,8 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
         TextView itemPriceTextView = cardView.findViewById(R.id.item_price);
         itemPriceTextView.setTextSize(22);
         itemPriceTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        String itemPrice = "$" + itemPrices[position];
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        String itemPrice = "$" + formatter.format(itemPrices[position]);
         itemPriceTextView.setText(itemPrice);
     }
 }

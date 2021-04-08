@@ -53,13 +53,4 @@ public class Item {
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
     }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "itemName='" + itemName + '\'' +
-                ", price=" + price +
-                ", itemURL='" + itemURL + '\'' +
-                '}';
-    }
 }
