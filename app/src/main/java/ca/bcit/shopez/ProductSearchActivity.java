@@ -81,6 +81,8 @@ public class ProductSearchActivity extends AppCompatActivity {
         @Override
             public Void doInBackground(Void... voids) {
                 try {
+                    itemList.clear();
+
                     String name1 = userSearchedText.replace(" ", "+");
                     System.out.println(name1);
 //                    String name2 = userSearchedText.replace(" ", "+");
@@ -122,7 +124,7 @@ public class ProductSearchActivity extends AppCompatActivity {
 
                         count++;
 //                        break;
-                        if (count == 3)
+                        if (count == 10)
                             break;
                     }
                 } catch (IOException e) {
