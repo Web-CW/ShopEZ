@@ -212,7 +212,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             case R.id.nav_sign_in:
                 intent = new Intent(this, SignInActivity.class);
                 break;
-            case R.id.nav_log_out:
+            case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut(); // logout
                 intent = new Intent(getApplicationContext(), SignInActivity.class);
                 break;
