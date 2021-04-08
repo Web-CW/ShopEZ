@@ -2,6 +2,8 @@ package ca.bcit.shopez;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -58,15 +60,17 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final CardView cardView = holder.cardView;
-
+        cardView.setBackgroundResource(R.drawable.custom_cardview_background);
         ImageView imageView = cardView.findViewById(R.id.item_image);
-
         Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions().override(750, 750)).into(imageView);
 
         TextView itemNameTextView = cardView.findViewById(R.id.item_name);
+        itemNameTextView.setTextSize(17);
         itemNameTextView.setText(itemNames[position]);
 
         TextView itemPriceTextView = cardView.findViewById(R.id.item_price);
+        itemPriceTextView.setTextSize(22);
+        itemPriceTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         itemPriceTextView.setText(itemPrices[position]);
     }
 }

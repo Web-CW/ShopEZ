@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +60,10 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
     public void onSearch(View view) {
         userSearchedText = searchTextField.getText().toString();
+        if (userSearchedText.length() == 0){
+            Toast.makeText(getApplicationContext(), "Search field cannot be empty",
+                    Toast.LENGTH_LONG).show();
+        }
         new Content().execute();
     }
 
@@ -70,8 +75,11 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             Elements data = memoryExpress.select("div.c-shca-icon-item");
             int productCounter = 0;
             for (Element product: data) {
-                String productName = product.select("div.c-shca-icon-item__body-name > a").text();
-                String productPrice = product.select("div.c-shca-icon-item__summary-list > span").text();
+                String productName = product.select("div.c-shca-icon-item__body-name > a")
+                        .text();
+                String productPrice = product.select("div.c-shca-icon-item__summary-list > span")
+                        .text()
+                        .replace("+", "");
                 String productImgURL = product.select("div.c-shca-icon-item__body-image > a")
                         .select("img")
                         .attr("src");

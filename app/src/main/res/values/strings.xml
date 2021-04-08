@@ -14,10 +14,11 @@
     <string name="search_by_name">Search Product by Name</string>
     <string name="nav_open_drawer">Open Navigation drawer</string>
     <string name="nav_close_drawer">Close navigation drawer</string>
-
+    <string name="image_description">Product image</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="logout">Logout</string>
     <string name="login_title">LOGIN</string>
     <string name="create_new_account">Create new account</string>
+    <string name="add_to_cart_btn">Add to Cart</string>
 </resources>

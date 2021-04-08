@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     card_view:cardElevation="2dp"
     card_view:cardCornerRadius="4dp">
@@ -15,32 +15,33 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_width="wrap_content"
+            android:background="@drawable/custom_image_view_background"
             android:layout_weight="1.0"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/image_description"
             android:id="@+id/item_image"
             android:scaleType="centerCrop"/>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/item_name"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textSize="10pt"
-                android:textAlignment="viewStart"
-                android:text="3060"/>
+                android:layout_marginLeft="10dp"
+                android:textAlignment="viewStart"/>
 
             <TextView
                 android:id="@+id/item_price"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$360"
-                android:textSize="10pt" />
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -53,16 +54,16 @@
                 android:id="@+id/item_url"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textSize="10pt"
-                android:layout_gravity="center"
-                android:text="URL of website"/>
+                android:textSize="8pt"
+                android:layout_gravity="center"/>
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Add to Cart" />
+                android:layout_gravity="end"
+                android:textSize="13sp"
+                android:text="@string/add_to_cart_btn" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
