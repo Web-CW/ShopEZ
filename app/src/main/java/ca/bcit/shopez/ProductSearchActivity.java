@@ -104,7 +104,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             String connectionString = String.format("https://www.newegg.ca/p/pl?d=%s", productSearchedName);
             Document newEgg = Jsoup.connect(connectionString).get();
             Elements data = newEgg.select("div.item-cell");
-            String vendorLogoURL = "https://upload.wikimedia.org/wikipedia/en/e/e6/Newegg_logo%2C_June_2020.png";
+            String vendorLogoURL = "https://c1.neweggimages.com/WebResource/Themes/Nest/logos/logo_424x210.png";
             int productCounter = 0;
             for (Element product: data) {
                 String productName = product.select("div.item-info > a")

@@ -68,7 +68,7 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
 
         ImageView vendorLogoImageView = cardView.findViewById(R.id.vendor_logo);
         Glide.with(cardView).load(vendorLogoURL[position]).apply(RequestOptions
-                .circleCropTransform().override(107, 107)).into(vendorLogoImageView);
+                .circleCropTransform().override(127, 127)).into(vendorLogoImageView);
 
         TextView itemNameTextView = cardView.findViewById(R.id.item_name);
         itemNameTextView.setTextSize(17);
