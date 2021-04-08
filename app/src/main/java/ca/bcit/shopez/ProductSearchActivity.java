@@ -112,8 +112,8 @@ public class ProductSearchActivity extends AppCompatActivity {
                         String productName = item.getElementsByClass("text-dark text-truncate_3").text();
                         String productPrice =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text();
 
-                        String productImgURL = item.getElementsByClass("pq-img-sub_manu_logo").attr("src");
-//                        System.out.println(productImgURL);
+                        String productImgURL = item.getElementsByClass("pq-img-manu_logo align-self-center").attr("src");
+                        System.out.println(productImgURL);
 
                         Item itemFound = new Item(productName, productPrice, productImgURL, "");
                         itemList.add(itemFound);
@@ -121,9 +121,9 @@ public class ProductSearchActivity extends AppCompatActivity {
 //                        text += productPrice + "\n\n";
 
                         count++;
-                        break;
-//                        if (count == 10)
-//                            break;
+//                        break;
+                        if (count == 3)
+                            break;
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
