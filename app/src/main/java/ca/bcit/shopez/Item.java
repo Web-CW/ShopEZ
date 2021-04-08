@@ -2,24 +2,24 @@ package ca.bcit.shopez;
 
 public class Item {
     private String itemName;
-    private double price;
+    private String price;
     private String itemURL;
     private String imgURL;
 
-    public Item(String itemName, double price, String itemURL, String imgURL) {
+    public Item(String itemName, String price, String imgURL, String itemURL) {
         this.itemName = itemName;
         this.price = price;
         this.itemURL = itemURL;
         this.imgURL = imgURL;
     }
 
-    public Item(String itemName, double price) {
+    public Item(String itemName, String price) {
         this.itemName = itemName;
         this.price = price;
 
         // Set dummy URL pics here later
-        this.itemURL = itemURL;
-        this.imgURL = imgURL;
+        this.itemURL = "";
+        this.imgURL = "";
     }
 
     public String getItemName() {
@@ -30,11 +30,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
