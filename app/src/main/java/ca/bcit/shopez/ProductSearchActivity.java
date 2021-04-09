@@ -60,7 +60,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
     public void onSearch(View view) {
         userSearchedText = searchTextField.getText().toString();
-        if (userSearchedText.length() == 0){
+        if (userSearchedText.length() == 0) {
             Toast.makeText(getApplicationContext(), "Search field cannot be empty",
                     Toast.LENGTH_LONG).show();
         }
@@ -197,7 +197,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         @Override
         public Void doInBackground(Void... voids) {
             mergeProducts();
-            itemList.sortInReverseAlphabeticalOrder();
+            itemList.sortInAscendingOrder();
             return null;
         }
     }
@@ -210,6 +210,9 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         switch(id) {
             case R.id.nav_homepage:
                 intent = new Intent(this, ProductSearchActivity.class);
+                break;
+            case R.id.nav_view_cart:
+                intent = new Intent(this, MyCartActivity.class);
                 break;
             case R.id.nav_sign_in:
                 intent = new Intent(this, SignInActivity.class);

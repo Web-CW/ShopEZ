@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardElevation="2dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:background="@drawable/custom_image_view_background"
+            android:layout_weight="1.0"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_description"
+            android:id="@+id/item_image"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textAlignment="viewStart"/>
+
+            <ImageView
+                android:id="@+id/vendor_logo"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="37dp"
+                android:contentDescription="@string/vendor_logo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_marginStart="10dp"
+                android:layout_width="237dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textSize="13sp"
+                android:textAllCaps="false"
+                android:text="@string/delete_btn" />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -33,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity implements NavigationView.
     private ProgressBar progressBar;
     private FirebaseAuth fAuth;
 
+    private Item item;
+
     private DatabaseReference mDatabase;
 
     @Override

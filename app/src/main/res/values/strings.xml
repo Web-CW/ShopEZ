@@ -26,4 +26,7 @@
     <string name="create_new_account">Create new account</string>
     <string name="welcome_text">Welcome to Your Favourite Price Comparison App!</string>
     <string name="vendor_logo">Vendor Logo</string>
+    <string name="delete_btn">Delete</string>
+    <string name="nav_view_cart">View cart</string>
+    <string name="cart_activity_title">My Cart</string>
 </resources>

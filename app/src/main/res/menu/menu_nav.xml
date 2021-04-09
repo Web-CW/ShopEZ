@@ -8,6 +8,10 @@
             android:title="@string/home_page_title"
             android:checked="true" />
         <item
+            android:id="@+id/nav_view_cart"
+            android:icon="@android:drawable/sym_action_email"
+            android:title="@string/nav_view_cart" />
+        <item
             android:id="@+id/nav_sign_in"
             android:icon="@android:drawable/sym_action_email"
             android:title="@string/sign_in" />
