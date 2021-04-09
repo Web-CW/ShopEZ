@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -41,41 +42,20 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_my_cart);
 
         tv = findViewById(R.id.cart_activity_title_text_view);
+        tv.setText("Please sign into your account to view your cart!");
         signInButton = findViewById(R.id.cart_activity_login_button);
         itemRecycler = findViewById(R.id.cart_item_recycler);
+        signInButton.setVisibility(View.VISIBLE);
 
         itemList = new ItemList();
 
-
-
-
-
-        Toolbar toolbar = findViewById(R.id.cart_toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this,
-                drawer,
-                toolbar,
-                R.string.nav_open_drawer,
-                R.string.nav_close_drawer);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_cart_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    public void getCartFromDatabase() {
-
-    }
-
-    public void goToSignInOnClick(View view) {
         ArrayList<Item> productsList = new ArrayList<>();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
         if (fAuth.getCurrentUser() != null) {
+            signInButton.setVisibility(View.GONE);
+            tv.setText("My Cart");
+
             DatabaseReference databaseItems = FirebaseDatabase.getInstance().getReference().child("users").child(fAuth.getUid()).child("item");
 
             databaseItems.addValueEventListener(new ValueEventListener() {
@@ -97,14 +77,31 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
-
-
 //            Task setValueTask = databaseItems.child("users").child(fAuth.getUid()).child("item").child(itemName).setValue(itemAddedToCart);
         }
 
+        Toolbar toolbar = findViewById(R.id.cart_toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.nav_open_drawer,
+                R.string.nav_close_drawer);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_cart_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void goToSignInOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(intent);
     }
 
     public void bindDataToAdapter() {
@@ -120,7 +117,7 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
             itemLinkURL[i] = itemList.getItemByIndex(i).getVendorLogoURL();
         }
 
-        CaptionedItemsAdapter adapter = new CaptionedItemsAdapter(itemNames, itemPrices, itemImgURL, itemLinkURL);
+        CaptionedCartItemsAdapter adapter = new CaptionedCartItemsAdapter(itemNames, itemPrices, itemImgURL, itemLinkURL);
         itemRecycler.setAdapter(adapter);
 
         GridLayoutManager lm = new GridLayoutManager(MyCartActivity.this, 1);

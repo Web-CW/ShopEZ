@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:text="@string/cart_activity_title"
             android:textSize="14pt"
+            android:textAlignment="center"
             android:layout_gravity="center" />
 
         <Button

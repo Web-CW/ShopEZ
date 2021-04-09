@@ -1,5 +1,6 @@
 package ca.bcit.shopez;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,88 +63,43 @@ public class CaptionedCartItemsAdapter extends RecyclerView.Adapter<CaptionedCar
 
     @Override
     public void onBindViewHolder(CaptionedCartItemsAdapter.ViewHolder holder, final int position) {
-//        final CardView cardView = holder.cardView;
-//        cardView.setBackgroundResource(R.drawable.custom_cardview_background);
-//        ImageView imageView = cardView.findViewById(R.id.item_image);
-//        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions()
-//                .override(600, 600)).into(imageView);
-//
-//        ImageView vendorLogoImageView = cardView.findViewById(R.id.vendor_logo);
-//        Glide.with(cardView).load(vendorLogoURL[position]).apply(RequestOptions
-//                .circleCropTransform().override(127, 127)).into(vendorLogoImageView);
-//
-//        TextView itemNameTextView = cardView.findViewById(R.id.item_name);
-//        itemNameTextView.setTextSize(17);
-//        itemNameTextView.setText(itemNames[position]);
-//
-//        TextView itemPriceTextView = cardView.findViewById(R.id.item_price);
-//        itemPriceTextView.setTextSize(22);
-//        itemPriceTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-//        DecimalFormat formatter = new DecimalFormat("#,###.00");
-//        String itemPrice = "$" + formatter.format(itemPrices[position]);
-//        itemPriceTextView.setText(itemPrice);
-//
-//        Button addToCartButton = cardView.findViewById(R.id.add_to_cart_button);
-//
-//        Item item = new Item(itemNames[position], itemPrices[position], itemImgURL[position], vendorLogoURL[position]);
-//
-//        addToCartButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                addItem(item);
-//            }
-//        });
+        final CardView cardView = holder.cardView;
+        cardView.setBackgroundResource(R.drawable.custom_cardview_background);
+        ImageView imageView = cardView.findViewById(R.id.cart_item_image);
+        Glide.with(cardView).load(itemImgURL[position]).apply(new RequestOptions()
+                .override(600, 600)).into(imageView);
+
+        ImageView vendorLogoImageView = cardView.findViewById(R.id.cart_vendor_logo);
+        Glide.with(cardView).load(vendorLogoURL[position]).apply(RequestOptions
+                .circleCropTransform().override(127, 127)).into(vendorLogoImageView);
+
+        TextView itemNameTextView = cardView.findViewById(R.id.cart_item_name);
+        itemNameTextView.setTextSize(17);
+        itemNameTextView.setText(itemNames[position]);
+
+        TextView itemPriceTextView = cardView.findViewById(R.id.cart_item_price);
+        itemPriceTextView.setTextSize(22);
+        itemPriceTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        String itemPrice = "$" + formatter.format(itemPrices[position]);
+        itemPriceTextView.setText(itemPrice);
+
+        Button addToCartButton = cardView.findViewById(R.id.delete_from_cart_button);
+
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteItem(itemNames[position]);
+            }
+        });
     }
 
-    private void addItem(Item item) {
+    private void deleteItem(String name) {
         databaseItems = FirebaseDatabase.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
 
         if (fAuth.getCurrentUser() != null) {
-            String itemName = item.getItemName().trim();
-
-            System.out.println("###########################################");
-            System.out.println(itemName);
-            itemName = itemName.replace("/", "with");
-            itemName = itemName.replace(",", " ");
-            itemName = itemName.replace(".", "");
-            System.out.println(itemName);
-
-            double price = item.getPrice();
-            String imgURL = item.getImgURL();
-            String itemURL = item.getVendorLogoURL();
-
-            String id = databaseItems.push().getKey();
-            Item itemAddedToCart = new Item(itemName, price, imgURL, itemURL);
-
-            Task setValueTask = databaseItems.child("users").child(fAuth.getUid()).child("item").child(itemName).setValue(itemAddedToCart);
+            databaseItems.child("users").child(fAuth.getUid()).child("item").child(name).removeValue();
         }
-
-//        String itemName = item.getItemName().trim();
-//        double price = item.getPrice();
-//        String imgURL = item.getImgURL();
-//        String itemURL = item.getVendorLogoURL();
-//
-//        String id = databaseItems.push().getKey();
-//        Item itemAddedToCart = new Item(itemName, price, imgURL, itemURL);
-//
-//        Task setValueTask = databaseItems.child("item").child(itemName).setValue(itemAddedToCart);
-
-//        setValueTask.addOnSuccessListener(new OnSuccessListener() {
-//            @Override
-//            public void onSuccess(Object o) {
-//                Toast.makeText(ProductSearchActivity.this,"Item added to cart!",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        setValueTask.addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(ProductSearchActivity.this,
-//                        "something went wrong.\n" + e.toString(),
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
-
 }

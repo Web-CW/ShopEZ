@@ -191,7 +191,6 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
             GridLayoutManager lm = new GridLayoutManager(ProductSearchActivity.this, 1);
             itemRecycler.setLayoutManager(lm);
-
         }
 
         @Override
