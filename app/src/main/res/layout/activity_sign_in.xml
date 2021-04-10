@@ -4,12 +4,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:id="@+id/drawer_layout"
 android:layout_width="match_parent"
-android:layout_height="match_parent" >
+android:layout_height="match_parent">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     <include
         layout="@layout/toolbar_main"
         android:id="@+id/toolbar" />
@@ -17,7 +17,7 @@ android:layout_height="match_parent" >
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#CDA412">
+        android:background="#F6F2FF">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,6 +34,8 @@ android:layout_height="match_parent" >
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:hint="@string/email"
             android:inputType="textPersonName" />
 
@@ -41,6 +43,9 @@ android:layout_height="match_parent" >
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorLink="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:hint="@string/password"
             android:inputType="textPassword" />
 
@@ -48,7 +53,7 @@ android:layout_height="match_parent" >
             android:id="@+id/sign_in_btn"
             android:layout_width="310dp"
             android:layout_height="74dp"
-            android:backgroundTint="#3EB489"
+            android:backgroundTint="#932F6D"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
@@ -61,7 +66,7 @@ android:layout_height="match_parent" >
             android:id="@+id/sign_up_btn"
             android:layout_width="310dp"
             android:layout_height="74dp"
-            android:backgroundTint="#3EB489"
+            android:backgroundTint="#932F6D"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"

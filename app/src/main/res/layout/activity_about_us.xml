@@ -51,7 +51,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="20dp"
                         android:text="Senior Web Designer"
                         android:textStyle="bold"
                         android:textAppearance="?attr/textAppearanceBody2"
