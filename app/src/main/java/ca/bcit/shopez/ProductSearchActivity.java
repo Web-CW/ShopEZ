@@ -67,6 +67,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 //                System.out.println("###############################");
 //                System.out.println(sortOption);
                 if (!searchTextField.getText().toString().trim().equals("")) {
+                    userSearchedText = searchTextField.getText().toString();
                     sortOption = arrayAdapter.getItem(position).toString();
                     new Content().execute();
                 }
