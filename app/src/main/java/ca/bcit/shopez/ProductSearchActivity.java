@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -91,8 +92,9 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+        navigationView.getMenu().findItem(R.id.nav_homepage).setChecked(true);
 
+    }
 
     public void onSearch(View view) {
         userSearchedText = searchTextField.getText().toString();
@@ -268,16 +270,15 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 intent = new Intent(this, SignInActivity.class);
                 break;
             case R.id.nav_sign_out:
-                FirebaseAuth.getInstance().signOut(); // logout
+                FirebaseAuth.getInstance().signOut();
                 intent = new Intent(getApplicationContext(), SignInActivity.class);
                 break;
             case R.id.nav_about:
                 intent = new Intent(this, AboutUsActivity.class);
                 break;
         }
-
         startActivity(intent);
-
+        item.setChecked(true);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

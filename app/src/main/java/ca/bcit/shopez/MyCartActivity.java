@@ -40,6 +40,7 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
+        NavigationView navigationView = findViewById(R.id.nav_cart_view);
 
         tv = findViewById(R.id.cart_activity_title_text_view);
         tv.setText("Please sign into your account to view your cart!");
@@ -94,9 +95,8 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
                 R.string.nav_close_drawer);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_cart_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().findItem(R.id.nav_view_cart).setChecked(true);
     }
 
     public void goToSignInOnClick(View view) {

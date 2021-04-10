@@ -63,6 +63,7 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(getApplicationContext(), ProductSearchActivity.class));
             finish();
         }
+        navigationView.getMenu().findItem(R.id.nav_sign_in).setChecked(true);
     }
 
     public void goToSignUpActivityOnClick(View view) {
