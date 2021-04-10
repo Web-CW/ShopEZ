@@ -12,15 +12,19 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.jsoup.Jsoup;
@@ -37,6 +41,8 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
     private String userSearchedText;
     private ItemList itemList;
     private AutoCompleteTextView autoCompleteTextView;
+    private TextInputLayout autoCompleteTextViewMain;
+    private String sortOption = "Price (Low to High)";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +54,25 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         LinearLayout layout = findViewById(R.id.layout_id);
         layout.getBackground().setAlpha(225);
 
+        autoCompleteTextViewMain = findViewById(R.id.filter_menu_main);
         autoCompleteTextView = findViewById(R.id.filter_menu);
         String[] options = {"Price (Low to High)", "Price (High to Low)", "Name (A-Z)", "Name (Z-A)"};
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.option_item, options);
         autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false);
         autoCompleteTextView.setAdapter(arrayAdapter);
+
+        System.out.println("####################################");
+
+        ((AutoCompleteTextView)autoCompleteTextViewMain.getEditText()).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                sortOption = arrayAdapter.getItem(position).toString();
+                new Content().execute();
+//                System.out.println("###############################");
+//                System.out.println(sortOption);
+            }
+        });
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -217,7 +237,15 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         @Override
         public Void doInBackground(Void... voids) {
             mergeProducts();
-            itemList.sortInAscendingOrder();
+            if (sortOption.equals("Price (Low to High)")) {
+                itemList.sortInAscendingOrder();
+            } else if (sortOption.equals("Price (High to Low)")) {
+                itemList.sortInDescendingOrder();
+            } else if (sortOption.equals("Name (A-Z)")) {
+                itemList.sortInAlphabeticalOrder();
+            } else {
+                itemList.sortInReverseAlphabeticalOrder();
+            }
             return null;
         }
     }
