@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.ShopEZ" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#DCCCFF</item>
+        <item name="colorPrimary">#932F6D</item>
         <item name="colorPrimaryVariant">#420039</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
