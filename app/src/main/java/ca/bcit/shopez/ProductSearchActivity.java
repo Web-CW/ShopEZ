@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -47,8 +48,11 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         LinearLayout layout = findViewById(R.id.layout_id);
         layout.getBackground().setAlpha(225);
 
-        autoCompleteTextView.findViewById(R.id.filter_menu);
-        String[] option = {};
+        autoCompleteTextView = findViewById(R.id.filter_menu);
+        String[] options = {"Price (Low to High)", "Price (High to Low)", "Name (A-Z)", "Name (Z-A)"};
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.option_item, options);
+        autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false);
+        autoCompleteTextView.setAdapter(arrayAdapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

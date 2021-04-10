@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:ellipsize="end"
     android:padding="16dp"
-    android:maxLines="1">
+    android:maxLines="1"
+    android:textColor="@color/black"
+    android:textAppearance="?attr/textAppearanceSubtitle1">
 
 </TextView>
