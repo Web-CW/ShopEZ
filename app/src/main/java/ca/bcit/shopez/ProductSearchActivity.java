@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -39,6 +41,9 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         setContentView(R.layout.activity_product_search);
         searchTextField = findViewById(R.id.search_item_name_edit_text);
         itemList = new ItemList();
+
+        LinearLayout layout = findViewById(R.id.layout_id);
+        layout.getBackground().setAlpha(220);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,13 +147,6 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             for (Element item: data) {
                 String productName = item.getElementsByClass("text-dark text-truncate_3").text();
                 String productPrice = "";
-//                System.out.println(item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
-//                        .text()
-//                        .replaceAll("[+$,]",""));
-//                System.out.println(item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text());
-                productPrice = item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
-                        .text()
-                        .replaceAll("[+$,]","");
                 if (!item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text().equals("")) {
                     productPrice =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
                             .text()

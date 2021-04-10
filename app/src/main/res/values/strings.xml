@@ -11,7 +11,7 @@
     <string name="home_category">Home</string>
     <string name="out_door_category">Outdoors</string>
     <string name="search_products_btn">Search</string>
-    <string name="search_by_name">Search Product by Name</string>
+    <string name="search_by_name">Search Product</string>
     <string name="nav_open_drawer">Open Navigation drawer</string>
     <string name="nav_close_drawer">Close navigation drawer</string>
     <string name="image_description">Product image</string>
