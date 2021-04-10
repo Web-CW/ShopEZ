@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
     private EditText searchTextField;
     private String userSearchedText;
     private ItemList itemList;
+    private AutoCompleteTextView autoCompleteTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,9 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
 
         LinearLayout layout = findViewById(R.id.layout_id);
         layout.getBackground().setAlpha(225);
+
+        autoCompleteTextView.findViewById(R.id.filter_menu);
+        String[] option = {};
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
