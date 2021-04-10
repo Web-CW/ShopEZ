@@ -61,15 +61,16 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
-        System.out.println("####################################");
-
         ((AutoCompleteTextView)autoCompleteTextViewMain.getEditText()).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                sortOption = arrayAdapter.getItem(position).toString();
-                new Content().execute();
 //                System.out.println("###############################");
 //                System.out.println(sortOption);
+                if (!searchTextField.getText().toString().trim().equals("")) {
+                    sortOption = arrayAdapter.getItem(position).toString();
+                    new Content().execute();
+                }
+
             }
         });
 
