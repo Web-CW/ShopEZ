@@ -43,7 +43,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
         itemList = new ItemList();
 
         LinearLayout layout = findViewById(R.id.layout_id);
-        layout.getBackground().setAlpha(220);
+        layout.getBackground().setAlpha(225);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
