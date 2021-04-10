@@ -137,15 +137,29 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             Elements data = doc.getElementsByClass("col-xl-3 col-lg-4 col-6 mt-0_5 px-0_5 toggleBox mb-1");
             String vendorLogoURL = "https://imgcdn.flyers-on-line.com/weekly-flyer/canada-computers/logo-387/canada-computers.jpg?v=1570574981";
             int count = 0;
+            System.out.println("###############");
+            System.out.println(canadaComputersURL);
             for (Element item: data) {
-                String productName = item.getElementsByClass("text-dark text-truncate_3")
-                        .text();
-                String productPrice =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
+                String productName = item.getElementsByClass("text-dark text-truncate_3").text();
+                String productPrice = "";
+//                System.out.println(item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
+//                        .text()
+//                        .replaceAll("[+$,]",""));
+//                System.out.println(item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text());
+                productPrice = item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
                         .text()
                         .replaceAll("[+$,]","");
+                if (!item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text().equals("")) {
+                    productPrice =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
+                            .text()
+                            .replaceAll("[+$,]","");
+                } else {
+                    productPrice =  item.getElementsByClass("text-danger d-block mb-0 pq-hdr-product_price line-height")
+                            .text()
+                            .replaceAll("[+$,]","");
+                }
                 String productImgURL = item.getElementsByClass("pq-img-manu_logo align-self-center")
                         .attr("src");
-                System.out.println(productImgURL);
                 Item itemFound = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(itemFound);
                 count++;
