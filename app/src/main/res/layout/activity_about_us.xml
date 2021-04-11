@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
         <include
             layout="@layout/toolbar_main"
@@ -34,7 +34,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:contentDescription="Charlie's Picture"
+                    android:contentDescription="@string/charlie_picture_description"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/charlie" />
 
@@ -48,14 +48,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Charlie Wei"
+                        android:text="@string/charlie_wei"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="Senior Web Designer"
+                        android:text="@string/job_title"
                         android:textStyle="bold"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:textStyle="italic"
-                        android:text="There’s no shortage of remarkable ideas, what’s missing is the will to execute them."
+                        android:text="@string/charlie_quotes"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
 
@@ -93,7 +93,7 @@
                     android:layout_height="335dp"
                     app:srcCompat="@drawable/xavier"
                     android:scaleType="centerCrop"
-                    android:contentDescription="Xavier's Picture"
+                    android:contentDescription="@string/xavier_picture_description"
                     />
 
                 <LinearLayout
@@ -106,7 +106,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Xavier Nguyen"
+                        android:text="@string/xavier_nguyen"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <TextView
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textStyle="bold"
-                        android:text="Senior Web Developer"
+                        android:text="@string/job_title"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
                         />
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:textStyle="italic"
-                        android:text="Imagination is everything. It is the preview of life’s coming attractions."
+                        android:text="@string/xavier_quotes"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
 
