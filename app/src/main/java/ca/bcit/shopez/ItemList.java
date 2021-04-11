@@ -33,10 +33,20 @@ public class ItemList {
         return productsName;
     }
 
-    private Item retrieveItemByPrice(double price){
+    private boolean isAddedAlready(Item item, ArrayList<Item> addedItemsList){
+        for (Item product : addedItemsList){
+            if (product.equals(item)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Item retrieveItemByPrice(double price, ArrayList<Item> addedItemsList){
         Item item = null;
         for (Item product : this.itemList){
-            if (Double.compare(product.getPrice(), price) == 0){
+            if (Double.compare(product.getPrice(), price) == 0 &&
+                    !isAddedAlready(product, addedItemsList)){
                 item = product;
                 break;
             }
@@ -59,7 +69,7 @@ public class ItemList {
         Double[] productsPrice = this.sortProductsPriceInAscendingOrder();
         ArrayList<Item> sortedItemsList = new ArrayList<>();
         for (Double price : productsPrice) {
-            sortedItemsList.add(this.retrieveItemByPrice(price));
+            sortedItemsList.add(this.retrieveItemByPrice(price, sortedItemsList));
         }
         this.itemList = sortedItemsList;
     }
@@ -69,7 +79,7 @@ public class ItemList {
         Arrays.sort(productsPrice, Collections.reverseOrder());
         ArrayList<Item> sortedItemsList = new ArrayList<>();
         for (Double price : productsPrice) {
-            sortedItemsList.add(this.retrieveItemByPrice(price));
+            sortedItemsList.add(this.retrieveItemByPrice(price, sortedItemsList));
         }
         this.itemList = sortedItemsList;
 
