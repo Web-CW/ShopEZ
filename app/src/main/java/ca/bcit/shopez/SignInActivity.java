@@ -127,10 +127,9 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_about:
                 intent = new Intent(this, AboutUsActivity.class);
                 break;
-//            case R.id.nav_help:
-//                break;
-//            case R.id.nav_feedback:
-//                break;
+            case R.id.nav_view_cart:
+                intent = new Intent(this, MyCartActivity.class);
+                break;
         }
 
         startActivity(intent);
