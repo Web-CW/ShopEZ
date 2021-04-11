@@ -4,19 +4,19 @@
         android:checkableBehavior="single" >
         <item
             android:id="@+id/nav_homepage"
-            android:icon="@android:drawable/sym_action_email"
+            android:icon="@drawable/baseline_home_24"
             android:title="@string/home_page_title"/>
         <item
             android:id="@+id/nav_view_cart"
-            android:icon="@android:drawable/sym_action_email"
-            android:title="@string/nav_view_cart" />
+            android:title="@string/nav_view_cart"
+            android:icon="@drawable/baseline_shopping_cart_24"/>
         <item
             android:id="@+id/nav_sign_in"
-            android:icon="@android:drawable/sym_action_email"
+            android:icon="@drawable/baseline_account_circle_24"
             android:title="@string/sign_in" />
         <item
             android:id="@+id/nav_sign_out"
-            android:icon="@android:drawable/ic_menu_edit"
+            android:icon="@drawable/baseline_logout_24"
             android:title="@string/sign_out" />
 
     </group>

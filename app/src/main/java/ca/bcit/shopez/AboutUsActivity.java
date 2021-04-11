@@ -35,6 +35,7 @@ public class AboutUsActivity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = findViewById(R.id.nav_about_us_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().findItem(R.id.nav_about).setChecked(true);
     }
 
     @Override
