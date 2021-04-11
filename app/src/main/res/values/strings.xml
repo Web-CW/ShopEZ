@@ -25,4 +25,6 @@
     <string name="nav_view_cart">View cart</string>
     <string name="cart_activity_title">My Cart</string>
     <string name="filter_hint">Select Filters</string>
+    <string name="question_1">Which stores are prices compared?</string>
+    <string name="question_1_hint">Question 1</string>
 </resources>

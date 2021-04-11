@@ -32,8 +32,13 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
 
         autoCompleteTextViewMain = findViewById(R.id.question_1);
         autoCompleteTextView = findViewById(R.id.question_1_ans);
-        String[] options = {"Which stores are prices compared?", "Canada Computer Parts", "Memory Express", "Newegg"};
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.option_item, options);
+        String[] options = {"Canada Computer Parts", "Memory Express", "Newegg"};
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.option_item, options) {
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
+            }
+        };
         autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), true);
         autoCompleteTextView.setAdapter(arrayAdapter);
 

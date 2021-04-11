@@ -44,7 +44,7 @@
             android:layout_marginStart="1dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="1dp"
-            android:hint="Question 1">
+            android:hint="@string/question_1_hint">
 
             <AutoCompleteTextView
                 android:id="@+id/question_1_ans"
@@ -53,7 +53,7 @@
                 android:enabled="false"
                 android:inputType="none"
                 android:textColor="@color/black"
-                android:text="Which stores are prices compared?"/>
+                android:text="@string/question_1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
