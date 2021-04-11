@@ -30,7 +30,7 @@
                 android:title="@string/about_title" />
             <item
                 android:id="@+id/nav_faq"
-                android:icon="@android:drawable/ic_menu_help"
+                android:icon="@drawable/baseline_question_answer_24"
                 android:title="@string/faq_title" />
         </menu>
     </item>
