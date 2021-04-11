@@ -14,22 +14,15 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="bottom|start"
+        android:gravity="top|start"
         android:layout_margin="16dp" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@color/dark_mocha"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="#420039"
+            android:textSize="65sp"
+            android:textStyle="bold|italic"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"  />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/dark_mocha"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/welcome_text" />
     </LinearLayout>
 </FrameLayout>
