@@ -19,8 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class FAQActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private AutoCompleteTextView autoCompleteTextView;
-    private TextInputLayout autoCompleteTextViewMain;
+    private AutoCompleteTextView autoCompleteTextViewQuestion1;
+    private TextInputLayout autoCompleteTextViewMainQuestion1;
+    private AutoCompleteTextView autoCompleteTextViewQuestion2;
+    private TextInputLayout autoCompleteTextViewMainQuestion2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,8 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
         LinearLayout layout = findViewById(R.id.faq_layout_id);
         layout.getBackground().setAlpha(225);
 
-        autoCompleteTextViewMain = findViewById(R.id.question_1);
-        autoCompleteTextView = findViewById(R.id.question_1_ans);
+        autoCompleteTextViewMainQuestion1 = findViewById(R.id.question_1);
+        autoCompleteTextViewQuestion1 = findViewById(R.id.question_1_ans);
         String[] options = {"Canada Computer Parts", "Memory Express", "Newegg"};
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.option_item, options) {
             @Override
@@ -39,8 +41,21 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
                 return false;
             }
         };
-        autoCompleteTextView.setText(autoCompleteTextView.getText().toString());
-        autoCompleteTextView.setAdapter(arrayAdapter);
+        autoCompleteTextViewQuestion1.setText(autoCompleteTextViewQuestion1.getText().toString());
+        autoCompleteTextViewQuestion1.setAdapter(arrayAdapter);
+
+        autoCompleteTextViewMainQuestion2 = findViewById(R.id.question_2);
+        autoCompleteTextViewQuestion2 = findViewById(R.id.question_2_ans);
+
+        String[] answerQuestion2 = {"Some supported websites are not accessible", "outside of Canada."};
+        ArrayAdapter arrayAdapter2 = new ArrayAdapter(this, R.layout.long_answer, answerQuestion2) {
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
+            }
+        };
+        autoCompleteTextViewQuestion2.setText(autoCompleteTextViewQuestion2.getText().toString());
+        autoCompleteTextViewQuestion2.setAdapter(arrayAdapter2);
 
         Toolbar toolbar = findViewById(R.id.faq_toolbar);
         setSupportActionBar(toolbar);
