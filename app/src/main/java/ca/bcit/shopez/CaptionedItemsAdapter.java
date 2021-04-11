@@ -131,31 +131,5 @@ public class CaptionedItemsAdapter extends RecyclerView.Adapter<CaptionedItemsAd
 
             Task setValueTask = databaseItems.child("users").child(fAuth.getUid()).child("item").child(itemName).setValue(itemAddedToCart);
         }
-
-//        String itemName = item.getItemName().trim();
-//        double price = item.getPrice();
-//        String imgURL = item.getImgURL();
-//        String itemURL = item.getVendorLogoURL();
-//
-//        String id = databaseItems.push().getKey();
-//        Item itemAddedToCart = new Item(itemName, price, imgURL, itemURL);
-//
-//        Task setValueTask = databaseItems.child("item").child(itemName).setValue(itemAddedToCart);
-
-//        setValueTask.addOnSuccessListener(new OnSuccessListener() {
-//            @Override
-//            public void onSuccess(Object o) {
-//                Toast.makeText(ProductSearchActivity.this,"Item added to cart!",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        setValueTask.addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(ProductSearchActivity.this,
-//                        "something went wrong.\n" + e.toString(),
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }

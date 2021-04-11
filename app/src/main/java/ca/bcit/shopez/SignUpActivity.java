@@ -33,8 +33,6 @@ public class SignUpActivity extends AppCompatActivity implements NavigationView.
     private ProgressBar progressBar;
     private FirebaseAuth fAuth;
 
-    private Item item;
-
     private DatabaseReference mDatabase;
 
     @Override
@@ -45,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity implements NavigationView.
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         btnRegister = findViewById(R.id.btnRegister);
-//        tvLogin = findViewById(R.id.tvLogin);
         progressBar = findViewById(R.id.progressBar);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -114,13 +111,6 @@ public class SignUpActivity extends AppCompatActivity implements NavigationView.
             }
 
         });
-
-//        tvLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//            }
-//        });
     }
 
     @Override
