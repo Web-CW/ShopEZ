@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopEZ">
-        <activity android:name=".MyCartActivity"/>
+        <activity android:name=".FAQActivity"></activity>
+        <activity android:name=".MyCartActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".ProductSearchActivity">
