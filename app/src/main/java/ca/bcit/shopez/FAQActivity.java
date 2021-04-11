@@ -92,7 +92,7 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
                 break;
             case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut();
-                intent = new Intent(getApplicationContext(), FAQActivity.class);
+                intent = new Intent(getApplicationContext(), SignInActivity.class);
                 break;
             case R.id.nav_about:
                 intent = new Intent(this, AboutUsActivity.class);
