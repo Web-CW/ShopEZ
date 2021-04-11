@@ -23,6 +23,8 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
     private TextInputLayout autoCompleteTextViewMainQuestion1;
     private AutoCompleteTextView autoCompleteTextViewQuestion2;
     private TextInputLayout autoCompleteTextViewMainQuestion2;
+    private AutoCompleteTextView autoCompleteTextViewQuestion3;
+    private TextInputLayout autoCompleteTextViewMainQuestion3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
         autoCompleteTextViewMainQuestion2 = findViewById(R.id.question_2);
         autoCompleteTextViewQuestion2 = findViewById(R.id.question_2_ans);
 
-        String[] answerQuestion2 = {"Some supported websites are not accessible", "outside of Canada."};
+        String[] answerQuestion2 = {"The use of ShopEZ app outside of Canada is \nnot recommended, price comparisons are only \nvalid for Shoppers within Canada."};
         ArrayAdapter arrayAdapter2 = new ArrayAdapter(this, R.layout.long_answer, answerQuestion2) {
             @Override
             public boolean isEnabled(int position) {
@@ -56,6 +58,20 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
         };
         autoCompleteTextViewQuestion2.setText(autoCompleteTextViewQuestion2.getText().toString());
         autoCompleteTextViewQuestion2.setAdapter(arrayAdapter2);
+
+        autoCompleteTextViewMainQuestion3 = findViewById(R.id.question_3);
+        autoCompleteTextViewQuestion3 = findViewById(R.id.question_3_ans);
+
+        String[] answerQuestion3 = {"No there is no limit, however we do \nrecommended you keep your cart within 20 items. " +
+                "\nLimitations will be introduced as the user base \nincreases."};
+        ArrayAdapter arrayAdapter3 = new ArrayAdapter(this, R.layout.long_answer, answerQuestion3) {
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
+            }
+        };
+        autoCompleteTextViewQuestion3.setText(autoCompleteTextViewQuestion3.getText().toString());
+        autoCompleteTextViewQuestion3.setAdapter(arrayAdapter3);
 
         Toolbar toolbar = findViewById(R.id.faq_toolbar);
         setSupportActionBar(toolbar);

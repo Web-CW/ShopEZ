@@ -28,6 +28,7 @@
     <string name="question_1">Which stores are prices compared?</string>
     <string name="question_1_title">Question 1</string>
     <string name="question_2_title">Question 2</string>
+    <string name="question_3_title">Question 3</string>
     <string name="charlie_picture_description">Charlie\'s Picture</string>
     <string name="charlie_wei">Charlie Wei</string>
     <string name="job_title">Senior Web Designer</string>
@@ -35,8 +36,10 @@
         what’s missing is the will to execute them.</string>
     <string name="xavier_picture_description">Xavier\'s Picture</string>
     <string name="xavier_nguyen">Xavier Nguyen</string>
+    <string name="job_title_2">Senior Web Developer</string>
     <string name="xavier_quotes">Imagination is everything. It is the preview
         of life’s coming attractions.</string>
     <string name="nav_background_description">Electronic background for navigation menu</string>
-    <string name="question_2">Why cannot I see products from all supported websites?</string>
+    <string name="question_2">Can ShopEZ be used outside of Canada?</string>
+    <string name="question_3">Is there a limit on the number items that can be added to my cart?</string>
 </resources>
