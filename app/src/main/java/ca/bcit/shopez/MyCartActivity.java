@@ -146,6 +146,9 @@ public class MyCartActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_about:
                 intent = new Intent(this, AboutUsActivity.class);
                 break;
+            case R.id.nav_faq:
+                intent = new Intent(this, FAQActivity.class);
+                break;
         }
 
         startActivity(intent);
