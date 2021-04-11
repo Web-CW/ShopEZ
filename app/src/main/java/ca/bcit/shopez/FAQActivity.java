@@ -39,7 +39,7 @@ public class FAQActivity extends AppCompatActivity implements NavigationView.OnN
                 return false;
             }
         };
-        autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), true);
+        autoCompleteTextView.setText(autoCompleteTextView.getText().toString());
         autoCompleteTextView.setAdapter(arrayAdapter);
 
         Toolbar toolbar = findViewById(R.id.faq_toolbar);
