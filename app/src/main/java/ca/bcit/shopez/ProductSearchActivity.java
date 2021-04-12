@@ -178,6 +178,8 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             for (Element item: data) {
                 String productName = item.getElementsByClass("text-dark text-truncate_3").text();
                 String productPrice = "";
+                // d-block mb-0 pq-hdr-product_price line-height
+                // d-block mb-0 pq-hdr-product_price line-height
                 if (!item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height").text().equals("")) {
                     productPrice =  item.getElementsByClass("d-block mb-0 pq-hdr-product_price line-height")
                             .text()
