@@ -124,7 +124,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(item);
                 productCounter++;
-                if (productCounter == 3)
+                if (productCounter == 5)
                     break;
             }
         } catch (IOException ioException) {
@@ -152,11 +152,13 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 String productImgURL = product.select("div.item-container > a")
                         .select("img")
                         .attr("src");
-                Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
-                productsList.add(item);
-                productCounter++;
-                if (productCounter == 3)
-                    break;
+                if (!productPrice.isEmpty()){
+                    Item item = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
+                    productsList.add(item);
+                    productCounter++;
+                    if (productCounter == 5)
+                        break;
+                }
             }
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -173,8 +175,6 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
             Elements data = doc.getElementsByClass("col-xl-3 col-lg-4 col-6 mt-0_5 px-0_5 toggleBox mb-1");
             String vendorLogoURL = "https://imgcdn.flyers-on-line.com/weekly-flyer/canada-computers/logo-387/canada-computers.jpg?v=1570574981";
             int count = 0;
-            System.out.println("###############");
-            System.out.println(canadaComputersURL);
             for (Element item: data) {
                 String productName = item.getElementsByClass("text-dark text-truncate_3").text();
                 String productPrice = "";
