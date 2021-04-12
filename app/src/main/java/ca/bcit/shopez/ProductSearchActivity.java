@@ -194,7 +194,7 @@ public class ProductSearchActivity extends AppCompatActivity implements Navigati
                 Item itemFound = new Item(productName, Double.parseDouble(productPrice), productImgURL, vendorLogoURL);
                 productsList.add(itemFound);
                 count++;
-                if (count == 3)
+                if (count == 5)
                     break;
             }
         } catch (IOException e) {

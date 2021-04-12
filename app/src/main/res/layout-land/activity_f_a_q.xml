@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/faq_drawer_layout"
+    android:background="#F6F2FF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include
+                layout="@layout/toolbar_main"
+                android:id="@+id/faq_toolbar" />
+
+            <LinearLayout
+                android:id="@+id/faq_layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:background="@drawable/pinksky">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/faq_title"
+                   android:textSize="15pt"
+                   android:textColor="@color/white"
+                   android:layout_gravity="center"
+                   android:textAlignment="center">
+               </TextView>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:id="@+id/question_1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/baseline_help_outline_24"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="1dp"
+                android:hint="@string/question_1_title">
+
+                <AutoCompleteTextView
+                    android:id="@+id/question_1_ans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:text="@string/question_1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:id="@+id/question_2"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/baseline_help_outline_24"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="1dp"
+                android:hint="@string/question_2_title">
+
+                <AutoCompleteTextView
+                    android:id="@+id/question_2_ans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:text="@string/question_2"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:id="@+id/question_3"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/baseline_help_outline_24"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="1dp"
+                android:hint="@string/question_3_title">
+
+                <AutoCompleteTextView
+                    android:id="@+id/question_3_ans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:text="@string/question_3"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/faq_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/menu_nav" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
